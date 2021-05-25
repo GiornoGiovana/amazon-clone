@@ -14,7 +14,7 @@ export default function Home({ products }) {
 
       <Header />
 
-      <main className="max-w-screen-2xl mx-auto">
+      <main className="max-w-screen-2xl mx-auto absolute top-24 left-0 right-0">
         <Banner />
 
         <ProductFeed products={products} />

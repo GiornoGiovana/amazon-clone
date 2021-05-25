@@ -6,7 +6,18 @@ import { selectItems, selectTotal } from "../redux/slices/basketSlice";
 import Currency from "react-currency-formatter";
 import { useSession } from "next-auth/client";
 
-//1:43:38
+const filterArray = (myArray) => {
+  const myObj = {};
+  const newArray = [];
+  myArray.forEach((elem) => {
+    if (!myObj[elem.id]) {
+      myObj[elem.id] = true;
+      newArray.push(elem);
+    }
+  });
+  return newArray;
+};
+
 function Checkout() {
   const [session] = useSession();
   const items = useSelector(selectItems);
@@ -16,7 +27,7 @@ function Checkout() {
     <div className="bg-gray-100">
       <Header />
 
-      <main className="lg:flex mx-auto max-w-screen-2xl">
+      <main className="lg:flex mx-auto max-w-screen-2xl absolute top-24 left-0 right-0">
         <div className="flex-grow m-5 shadow-sm">
           <Image
             src="https://links.papareact.com/ikj"
@@ -32,9 +43,9 @@ function Checkout() {
                 : "Shopping Basket"}
             </h1>
 
-            {items.map((item, i) => (
+            {filterArray(items).map((item) => (
               <CheckoutProduct
-                key={i}
+                key={item.id}
                 id={item.id}
                 category={item.category}
                 description={item.description}

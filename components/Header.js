@@ -18,7 +18,7 @@ export default function Header() {
   const items = useSelector(selectItems);
 
   return (
-    <header>
+    <header className="fixed z-50 w-full">
       <div className="flex items-center bg-amazon_blue p-1 flex-grow py-2">
         <div className="mt-2 flex items-center flex-grow sm:flex-grow-0">
           <Image
